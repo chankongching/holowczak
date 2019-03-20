@@ -53,7 +53,7 @@ int main(int argc, char** argv)
 
 		while( client.isConnected()) {
 			printf(currentDateTime());
-			printf("\n")
+			printf("\n");
 			client.processMessages();
 		}
 
