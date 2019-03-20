@@ -70,6 +70,7 @@ void PosixTestClient::processMessages()
 			break;
 		case ST_PLACEORDER_ACK:
 		  printf("m_state = ST_PLACEORDER_ACK\n");
+			exit(0);
 			break;
 		case ST_CANCELORDER:
 		  printf("m_state = ST_CANCELORDER\n");
@@ -217,6 +218,10 @@ void PosixTestClient::orderStatus( OrderId orderId, const IBString &status, int 
 
 void PosixTestClient::nextValidId( OrderId orderId)
 {
+	printf("This is when nextValidId is called");
+	printf("OrderId = ")
+	printf(orderId);
+	printf("\n");
 	m_orderId = orderId;
 
 	m_state = ST_PLACEORDER;
