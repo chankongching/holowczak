@@ -52,7 +52,8 @@ int main(int argc, char** argv)
 		client.connect( host, port, clientId);
 
 		while( client.isConnected()) {
-			printf(currentDateTime() + "\n");
+			printf(currentDateTime());
+			printf("\n")
 			client.processMessages();
 		}
 
