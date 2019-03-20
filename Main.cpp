@@ -14,6 +14,9 @@
 #include <stdio.h>
 #include <time.h>
 
+// Print timestamp
+#include <ctime>
+
 // Application
 #include "PosixTestClient.h"
 
@@ -52,8 +55,10 @@ int main(int argc, char** argv)
 		client.connect( host, port, clientId);
 
 		while( client.isConnected()) {
-			printf(currentDateTime());
-			printf("\n");
+			printf(currentDateTime().c_str());
+                        std::time_t t = std::time(0);
+                        std::cout << "-timestamp:" << t << "\n";
+			// printf("\n");
 			client.processMessages();
 		}
 
