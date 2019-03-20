@@ -219,8 +219,9 @@ void PosixTestClient::orderStatus( OrderId orderId, const IBString &status, int 
 void PosixTestClient::nextValidId( OrderId orderId)
 {
 	printf("This is when nextValidId is called");
-	printf("OrderId = ")
-	printf(orderId);
+	printf("OrderId = ");
+        orderId.print();
+   	//printf(orderId.c_str());
 	printf("\n");
 	m_orderId = orderId;
 
