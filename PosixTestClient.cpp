@@ -65,32 +65,32 @@ void PosixTestClient::processMessages()
 	time_t now = time(NULL);
 	switch (m_state) {
 		case ST_PLACEORDER:
-		  printf("m_state = ST_PLACEORDER");
+		  printf("m_state = ST_PLACEORDER\n");
 			placeOrder();
 			break;
 		case ST_PLACEORDER_ACK:
-		  printf("m_state = ST_PLACEORDER_ACK");
+		  printf("m_state = ST_PLACEORDER_ACK\n");
 			break;
 		case ST_CANCELORDER:
-		  printf("m_state = ST_CANCELORDER");
+		  printf("m_state = ST_CANCELORDER\n");
 			cancelOrder();
 			break;
 		case ST_CANCELORDER_ACK:
-		  printf("m_state = ST_CANCELORDER_ACK");
+		  printf("m_state = ST_CANCELORDER_ACK\n");
 			break;
 		case ST_PING:
-		  printf("m_state = ST_PING");
+		  printf("m_state = ST_PING\n");
 			reqCurrentTime();
 			break;
 		case ST_PING_ACK:
-		  printf("m_state = ST_PING_ACK");
+		  printf("m_state = ST_PING_ACK\n");
 			if( m_sleepDeadline < now) {
 				disconnect();
 				return;
 			}
 			break;
 		case ST_IDLE:
-		  printf("m_state = ST_PING");
+		  printf("m_state = ST_PING\n");
 			if( m_sleepDeadline < now) {
 				m_state = ST_PING;
 				return;

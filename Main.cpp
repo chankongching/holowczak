@@ -8,15 +8,35 @@
 # include <unistd.h>
 #endif
 
+// Time printer
+#include <iostream>
+#include <string>
+#include <stdio.h>
+#include <time.h>
+
+// Application
 #include "PosixTestClient.h"
 
 const unsigned MAX_ATTEMPTS = 50;
 const unsigned SLEEP_TIME = 10;
 
+// Get current date/time, format is YYYY-MM-DD.HH:mm:ss
+const std::string currentDateTime() {
+    time_t     now = time(0);
+    struct tm  tstruct;
+    char       buf[80];
+    tstruct = *localtime(&now);
+    // Visit http://en.cppreference.com/w/cpp/chrono/c/strftime
+    // for more information about date/time format
+    strftime(buf, sizeof(buf), "%Y-%m-%d.%X", &tstruct);
+
+    return buf;
+}
+
 int main(int argc, char** argv)
 {
 	const char* host = argc > 1 ? argv[1] : "";
-        unsigned int port = 4002; 
+        unsigned int port = 4002;
 	//	unsigned int port = 7496;
 	int clientId = 0;
 
@@ -32,6 +52,7 @@ int main(int argc, char** argv)
 		client.connect( host, port, clientId);
 
 		while( client.isConnected()) {
+			printf(currentDateTime() + "\n");
 			client.processMessages();
 		}
 
@@ -45,4 +66,3 @@ int main(int argc, char** argv)
 
 	printf ( "End of POSIX Socket Client Test\n");
 }
-
